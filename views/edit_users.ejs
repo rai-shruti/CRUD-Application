@@ -1,0 +1,84 @@
+<%- include('layout/header')%>
+<style>
+   
+    .form-card {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      background: white;
+    }
+    .form-header {
+      background: #007bff;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .form-control, .form-select {
+      border-radius: 10px;
+    }
+    .btn-primary {
+      background: #007bff;
+      border: none;
+      border-radius: 10px;
+      padding: 10px;
+    }
+    .btn-primary:hover {
+      background: #0056b3;
+    }
+  </style>
+
+
+    <div class="container">
+        <br><br>
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <div class="form-card">
+           <h1>  <div class="form-header">Edit Users (<%=user.name %>)</div></h1> 
+              <div class="p-4">
+                
+                <form action="/update/<%=user._id %>" method="POST" enctype="multipart/form-data">
+                  <!-- Name Field -->
+                  <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" name="name" class="form-control" value="<%=user.name %>" placeholder="Enter your name" required>
+                  </div>
+    
+                  
+    
+                  <!-- Phone Field -->
+                  <div class="mb-3">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="tel" name="phone" value="<%=user.phone %>" class="form-control" id="phone" placeholder="Enter your phone number" required>
+                  </div>
+                  
+                  <!-- Email Field -->
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="email" value="<%=user.email %>" class="form-control"  placeholder="Enter your email" required>
+                  </div>
+    
+                
+    
+                 <!-- Image Upload -->
+                  <div class="mb-3">
+                    <label for="image" class="form-label">Upload Image</label>
+                    <input type="file" name="image" class="form-control"  accept="image/*" required>
+                    <img src="/<%=user.image %>" width="" class="img-thumbnail mt-1">
+                  </div>
+                  <input type="hidden" name="old_image" value="<%= user.image %>"/>
+                  <!-- Add User Button -->
+                  <div class="d-grid">
+                    <button type="submit" class="btn btn-success">Update User</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<%- include('layout/footer')%>
